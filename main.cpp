@@ -144,14 +144,14 @@ class security{
 		}
 		if (hasAcc) {
 			matchingpassword = tp.substr(len+1 , tp.length() - (len+1));
-			// 	struct termios old_settings, new_settings;
-			// tcgetattr(STDIN_FILENO, &old_settings);
-			// new_settings = old_settings;
-			// new_settings.c_lflag &= ~(ICANON | ECHO);
-			// tcsetattr(STDIN_FILENO, TCSANOW, &new_settings);
+			struct termios old_settings, new_settings;
+			tcgetattr(STDIN_FILENO, &old_settings);
+			new_settings = old_settings;
+			new_settings.c_lflag &= ~(ICANON | ECHO);
+			tcsetattr(STDIN_FILENO, TCSANOW, &new_settings);
 			cout<<"\nEnter your password : ";
 			cin>>password;
-			// tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
+			tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
 			if (password == matchingpassword) {
 				cout <<"\nLogin Sucessfully! Please confirm your details :"<<endl;
 				printbill('p');
@@ -164,14 +164,14 @@ class security{
 			
 		}
 		else {
-			// 	struct termios old_settings, new_settings;
-			// tcgetattr(STDIN_FILENO, &old_settings);
-			// new_settings = old_settings;
-			// new_settings.c_lflag &= ~(ICANON | ECHO);
-			// tcsetattr(STDIN_FILENO, TCSANOW, &new_settings);
+			struct termios old_settings, new_settings;
+			tcgetattr(STDIN_FILENO, &old_settings);
+			new_settings = old_settings;
+			new_settings.c_lflag &= ~(ICANON | ECHO);
+			tcsetattr(STDIN_FILENO, TCSANOW, &new_settings);
 			cout<<"\nCreate a password : ";
 			cin>>password;
-			// tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
+			tcsetattr(STDIN_FILENO, TCSANOW, &old_settings);
 			cout<<"\nEnter your Email Address : ";
 			cin>>mailaddress;
 			cust.personalInfo();
@@ -509,10 +509,7 @@ int main() {
 		cout<<"\nDo you want to continue? (y/n) : ";
 		cin>>option;
 	}while(option == 'y');
-	//customer adult;
-	
-	//adult.Requestinfo();
-	//adult.printBill();
+
 	
 	return 0;
 
