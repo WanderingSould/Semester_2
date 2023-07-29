@@ -7,7 +7,7 @@
 #include <fstream>
 #include <string>
 #include <stdlib.h>
-//#include <termios.h>
+#include <termios.h>
 #include <unistd.h>
 
 using namespace std;
@@ -307,6 +307,9 @@ class security{
 				printbill('a');
 				break;
 			}
+			else {
+				cout<<"User not found!";
+			}
 		}
 
 		detailsinfile.close();
@@ -509,7 +512,6 @@ int main() {
 		cout<<"\nDo you want to continue? (y/n) : ";
 		cin>>option;
 	}while(option == 'y');
-
 	
 	return 0;
 
